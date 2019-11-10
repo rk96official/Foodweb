@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet"> -->
+        <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/style.css">
+        <title>FoodWeb // Search restaurants</title>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <p class="title" ><img src="img/food.png" alt="Logo" class="header__logo">
+                &nbsp; Foodweb</p>
+                <form class="search">
+                    <input type="text" class="search__field" placeholder="Enter the city...">
+                    <button class="btn search__btn">
+                        <svg class="search__icon">
+                            <use href="img/icons.svg#icon-magnifying-glass"></use>
+                        </svg>
+                        <span>Search</span>
+                    </button>
+                </form>
+                <div class="favorites">
+                    <div class="favorites__field">
+                        <svg class="favorites__icon">
+                            <use href="img/icons.svg#icon-heart"></use>
+                        </svg>
+                    </div>
+                    <div class="favorites__panel">
+                        <ul class="favorites__list"></ul>
+                    </div>
+                </div>
+            </header>
+            <div class="results">
+                <ul class="results__list"> </ul>
+                <div class="results__pages"></div>
+            </div>
+            <div class="restaurant"></div>
+            <div class = "top">
+                <div class = "topic"></div>
+                <div class ="map"></div>
+                <div class="weather"></div>   
+            </div>   
+            <div class="copyright">
+                &copy; by Rupak Kadel. Powered by
+                <a href="http://zomato.com" target="_blank" class="link">Zomato</a>
+                <a href="http://openweathermap.org" target="_blank" class="link">Open Weather Map</a>
+                <a href="http://maps.google.com" target="_blank" class="link">Google Maps</a>
+            </div>
+        </div>
+    </body>
+</html>
