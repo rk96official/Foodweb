@@ -1,16 +1,18 @@
 import { elements } from './base';
 import * as mapsView from './mapView';
 import {key2} from '../config';
+
 export const clearRestaurant = () => {
     elements.restaurant.innerHTML = '';
 };
 
+
 const createreview = review => `
     <li class="restaurant__item">
-        <svg class="restaurant__icon">
-            <use href="img/icons.svg#icon-check"></use>
-        </svg>
-        ${review.review.user.name}<br>
+        <figure class="results__fig">
+                    <img src="${review.review.user.profile_image}">
+        </figure>
+        ${review.review.user.name} - (${review.review.user.foodie_level})<br>
         Rating: ${review.review.rating}<br>
         ${review.review.rating_text}<br>
         ${review.review.review_time_friendly}<br>
@@ -20,7 +22,7 @@ const createreview = review => `
 `;
 
 
-export const renderRestaurant = (restaurants, isFavorite) => {
+export const renderRestaurant = (restaurants, isFavorite, reviews) => {
     const markup = `
     <br />
     <br />
@@ -97,14 +99,15 @@ export const renderRestaurant = (restaurants, isFavorite) => {
     <br />
     
     <div class = "weathers">
+        <h3><center>PHOTOS</center></h3><br>
         <ul class = "fiveday"> 
                 ${restaurants.photos.map(el => createphoto(el)).join('')}
         </ul>
     </div>
     <div class="restaurant__reviews">
-        <b><center>REVIEWS</center></b><br>
+        <h3><center>REVIEWS</center></h3><br>
         <ul class="restaurant__reviews-list">
-            ${restaurants.reviews.map(el => createreview(el)).join('')}
+            ${reviews.user_reviews.map(el => createreview(el)).join('')}
         </ul>
     </div>  
     `;
