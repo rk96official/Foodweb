@@ -2,6 +2,7 @@ import Search from './models/Search';
 import Restaurants from './models/Restaurants';
 import Weather from './models/Weather';
 import Favorites from './models/Favorites';
+import Reviews from './models/Reviews';
 import * as searchView from './views/searchView';
 import * as weatherView from './views/weatherView';
 import * as restaurantsView from './views/restaurantsView';
@@ -42,7 +43,6 @@ const controlWeather = async () => {
             controlSearch(query);
             
             // 5) Render results on UI
-            console.log (state.fiveday.result);
             weatherView.renderWeather(state.weather.result, state.fiveday.result);
             mapsView.rendertop(state.weather.result);
             mapsView.renderCity(query);
@@ -108,18 +108,21 @@ const controlRestaurant = async () => {
 
         // Create new restaurant object
         state.restaurant = new Restaurants(id);
-
+        state.reviews = new Reviews(id);
         try {
             // Get restaurant data and parse ingredients
             await state.restaurant.getRestaurants();
-            
+            await state.reviews.getReviews();
             // Render restaurant
+            console.log(state.reviews.results.data);
             clearLoader();
             document.body.style.backgroundImage = "linear-gradient(to right, lightblue , green)";
             restaurantsView.renderRestaurant(
                 state.restaurant,
-                state.favorites.isFavorite(id)
+                state.favorites.isFavorite(id),
+                state.reviews.results.data
             );
+            
             mapsView.clearMap();
             mapsView.renderCity(state.restaurant.address);
         } catch (err) {
